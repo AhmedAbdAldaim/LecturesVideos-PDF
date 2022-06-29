@@ -1,0 +1,6 @@
+abstract class LectureByCoursesState{}
+class InitLectureByCoursesState extends LectureByCoursesState{}
+class GetLectureByCourseLoadingState extends LectureByCoursesState{}
+class GetLectureByCourseSuccesState extends LectureByCoursesState{}
+class GetLectureByCourseErrorsState extends LectureByCoursesState{}
+
