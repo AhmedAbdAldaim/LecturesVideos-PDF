@@ -16,7 +16,7 @@ class LectureByCoursesCubit extends Cubit<LectureByCoursesState> {
   LectureModel? lectureModel;
   getAllLectureByCoursesFun({required int coursesId}) {
     emit(GetLectureByCourseLoadingState());
-    DioHelper.postData(path: lecture, data: {'id': coursesId}).then((value) {
+    DioHelper.postData(path: lecture, data: {'course_id': coursesId}).then((value) {
       lectureModel = LectureModel.fromJson(value.data);
       emit(GetLectureByCourseSuccesState());
     }).catchError((error) {

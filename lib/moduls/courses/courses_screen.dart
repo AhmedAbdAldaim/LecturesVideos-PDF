@@ -10,12 +10,18 @@ import 'package:lis/shared/components/constince.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CoursesScreen extends StatelessWidget {
-  const CoursesScreen({Key? key}) : super(key: key);
+  final int groubID;
+  final int classesID;
+  const CoursesScreen(
+      {Key? key, required this.groubID, required this.classesID})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      CoursesCubit.get(context).getAllCoursesFun();
+      CoursesCubit.get(context).getAllCoursesFun(
+        classid: classesID, groupid: groubID
+      );
 
       return BlocConsumer<CoursesCubit, CoursesState>(
         listener: (context, state) {},
@@ -26,39 +32,39 @@ class CoursesScreen extends StatelessWidget {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text('المحاضرات'),
-                  toolbarHeight: 60,
-                  leading: IconButton(
-                      onPressed: () {
-                        logOut(context);
-                      },
-                      icon: const Icon(
-                        Icons.logout_outlined,
-                        color: Colors.red,
-                      )),
                 ),
                 body: ConditionalBuilder(
                     condition: state is GetCoursesSuccesState &&
                         cubit.allCourseModel != null,
-                    builder: (context) =>cubit.allCourseModel!.allCourseDataList!=null? Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: GridView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      mainAxisSpacing: 20,
-                                      crossAxisSpacing: 20),
-                              itemCount: cubit.allCourseModel!
-                                  .allCourseDataList!.allCourseList.length,
-                              itemBuilder: (context, i) => buildCorusesItem(
-                                  context,
-                                  cubit.allCourseModel!.allCourseDataList!
-                                      .allCourseList[i])),
-                        ):Center(child: Text('لا توجد كورسات!')),
+                    builder: (context) =>
+                        cubit.allCourseModel!.allCourseDataList!.allCourseList.isNotEmpty
+                            ? Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: GridView.builder(
+                                    physics: const BouncingScrollPhysics(),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            mainAxisSpacing: 20,
+                                            crossAxisSpacing: 20),
+                                    itemCount: cubit
+                                        .allCourseModel!
+                                        .allCourseDataList!
+                                        .allCourseList
+                                        .length,
+                                    itemBuilder: (context, i) =>
+                                        buildCorusesItem(
+                                            context,
+                                            cubit
+                                                .allCourseModel!
+                                                .allCourseDataList!
+                                                .allCourseList[i])),
+                              )
+                            : const Center(child: Text('لا توجد كورسات!')),
                     fallback: (context) => Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
@@ -77,7 +83,12 @@ class CoursesScreen extends StatelessWidget {
       BuildContext context, AllCourseDataModel coursesModel) {
     return InkWell(
       onTap: () {
-        navigateTo(context, LecturesByCourses(coursesID: coursesModel.id,courseName: coursesModel.courseName,));
+        navigateTo(
+            context,
+            LecturesByCourses(
+              coursesID: coursesModel.id,
+              courseName: coursesModel.courseName,
+            ));
       },
       child: Container(
           clipBehavior: Clip.antiAliasWithSaveLayer,

@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lis/moduls/courses/courses_screen.dart';
+import 'package:lis/moduls/group/group_screen.dart';
 import 'package:lis/shared/components/components.dart';
 import 'package:lis/shared/network/local/shredprefrences_helper.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -34,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                 .then((value) {
               if (value) {
                 context.loaderOverlay.hide();
-                navigatepushAndRemoveUntil(context, const CoursesScreen());
+                navigatepushAndRemoveUntil(context, const GroupScreen());
               }
             });
           } else {

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lis/moduls/classes/cubit/classes_cubit.dart';
 import 'package:lis/moduls/comments/cubit/comments_cubit.dart';
 import 'package:lis/moduls/courses/courses_screen.dart';
 import 'package:lis/moduls/courses/cubit/courses_cubit.dart';
+import 'package:lis/moduls/group/cubit/group_cubit.dart';
+import 'package:lis/moduls/group/group_screen.dart';
 import 'package:lis/moduls/lecuterByCourses/cubit/lecture_cubit.dart';
 import 'package:lis/moduls/login/cubit/login_cubit.dart';
 import 'package:lis/moduls/login/login_screen.dart';
@@ -32,6 +35,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => GroupCubit()),
+        BlocProvider(create: (context) => ClassesCubit()),
         BlocProvider(create: (context) => CoursesCubit()),
         BlocProvider(create: (context) => LectureByCoursesCubit()),
         BlocProvider(create: (context) => ShowVideoCubit()),
@@ -41,7 +46,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ligththeme,
-        home: id == null ? LoginScreen() :  CoursesScreen(),
+        home: id == null ? LoginScreen() : const GroupScreen(),
       ),
     );
   }

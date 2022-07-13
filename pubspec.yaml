@@ -49,6 +49,8 @@ dependencies:
   path_provider: ^2.0.11
   permission_handler: ^8.3.0
   gallery_saver: ^2.3.2
+  syncfusion_flutter_pdfviewer: ^20.2.38-beta
+  #advance_pdf_viewer: 
 
 dev_dependencies:
   flutter_test:

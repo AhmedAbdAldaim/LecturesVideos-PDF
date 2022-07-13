@@ -11,9 +11,16 @@ class CoursesCubit extends Cubit<CoursesState> {
   static CoursesCubit get(context) => BlocProvider.of(context);
 
   AllCourseModel? allCourseModel;
-  getAllCoursesFun() {
+   //List<AllCourseDataModel> allCourseList = [];
+  getAllCoursesFun({
+    required int classid,
+    required int groupid,
+  }) {
     emit(GetCoursesLoadingState());
-    DioHelper.getData(path: allCourse).then((value) {
+    DioHelper.postData(path: allCourse , data: {
+      'class_id':classid, 'group_id':groupid
+    }).then((value) {
+       print(value.data);
       allCourseModel = AllCourseModel.fromJson(value.data);
       print(value.data);
       emit(GetCoursesSuccesState());

@@ -1,11 +1,9 @@
 class AllCourseModel {
-  late bool status;
-  late String message;
+
   AllCourseDataList? allCourseDataList;
-  AllCourseModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
-    allCourseDataList =json['courses-data']!=null? AllCourseDataList.fromJson(json['courses-data']):null;
+  AllCourseModel.fromJson(List<dynamic>? list) {
+  
+    allCourseDataList = AllCourseDataList.fromJson(list);
   }
 }
 
