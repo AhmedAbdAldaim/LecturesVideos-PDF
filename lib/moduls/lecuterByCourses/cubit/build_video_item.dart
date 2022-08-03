@@ -9,9 +9,10 @@ class BuildVideoItem extends StatefulWidget {
   final String url;
   final String pdf;
   final String title;
+  final String comment;
   final int index;
 
-  const BuildVideoItem(this.pdf, this.url, this.title, this.index, {Key? key})
+  const BuildVideoItem(this.pdf, this.url, this.title, this.comment ,this.index, {Key? key})
       : super(key: key);
 
   @override
@@ -41,7 +42,7 @@ class BuildVideoItemState extends State<BuildVideoItem> {
               child: ListTile(
                 onTap: () {
                   navigateTo(context,
-                      ShowVideoScreen(widget.url, widget.title, widget.index));
+                      ShowVideoScreen(widget.url, widget.title, widget.comment ,widget.index));
                 },
                 leading: Card(
                   child: AspectRatio(

@@ -10,8 +10,10 @@ import 'package:lis/shared/components/components.dart';
 class ShowVideoScreen extends StatefulWidget {
   final String url;
   final String title;
+  final String comment;
   final int index;
-  const ShowVideoScreen(this.url, this.title, this.index, {Key? key})
+  const ShowVideoScreen(this.url, this.title, this.comment, this.index,
+      {Key? key})
       : super(key: key);
 
   @override
@@ -33,8 +35,6 @@ class _ShowVideoScreenState extends State<ShowVideoScreen> {
         },
         builder: (context, state) {
           cubit = ShowVideoCubit.get(context);
-          
-        
 
           return Directionality(
             textDirection: TextDirection.rtl,
@@ -91,7 +91,8 @@ class _ShowVideoScreenState extends State<ShowVideoScreen> {
                                           ? const SizedBox(
                                               height: 20.0,
                                               width: 20.0,
-                                              child: CircularProgressIndicator(),
+                                              child:
+                                                  CircularProgressIndicator(),
                                             )
                                           : const CircleAvatar(
                                               radius: 50,
@@ -111,47 +112,80 @@ class _ShowVideoScreenState extends State<ShowVideoScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 5.0),
                               child: Row(
-                                children: const [
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Icon(Icons.chat),
-                                  Text('التعليقات')
+                                  Text('الملاحظات'),
                                 ],
                               ),
                             ),
                             Expanded(
-                              child: ConditionalBuilder(
-                                  condition: cubit.allCommentsModel != null,
-                                  builder: (context) => cubit.allCommentsModel!
-                                              .allCommentDataList !=
-                                          null
-                                      ? Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: ListView.separated(
-                                              physics:
-                                                  const BouncingScrollPhysics(),
-                                              itemCount: cubit
-                                                  .allCommentsModel!
-                                                  .allCommentDataList!
-                                                  .allCommentsList
-                                                  .length,
-                                              itemBuilder: (context, i) =>
-                                                  buildCommentsItem(
-                                                      context,
-                                                      cubit
-                                                          .allCommentsModel!
-                                                          .allCommentDataList!
-                                                          .allCommentsList[i]),
-                                              separatorBuilder:
-                                                  (BuildContext context,
-                                                          int index) =>
-                                                      const SizedBox(
-                                                        height: 20,
-                                                      )),
-                                        )
-                                      : const Center(
-                                          child: Text('لا توجد تعليقات!')),
-                                  fallback: (context) => const Center(
-                                      child: CircularProgressIndicator())),
-                            ),
+                                child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      decoration: BoxDecoration(
+                                        borderRadius:BorderRadius.circular(1),
+                                      ),
+                                      child: Card(
+                                        elevation: 0.0,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadiusDirectional.only(bottomEnd: Radius.circular(20), bottomStart: Radius.circular(5),topEnd:  Radius.circular(20), topStart:  Radius.circular(20) )),
+                                        color: Colors.black.withOpacity(0.8),
+                                        child: Center(
+                                            child: Text(widget.comment,
+                                                maxLines: 3,
+                                                textAlign: TextAlign.center,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge!
+                                                    .copyWith(
+                                                        color: Colors.white,
+                                                        overflow: TextOverflow
+                                                            .ellipsis))),
+                                      ))
+                                ],
+                              ),
+                            ))
+                            // Expanded(
+                            //   child: ConditionalBuilder(
+                            //       condition: cubit.allCommentsModel != null,
+                            //       builder: (context) => cubit.allCommentsModel!
+                            //                   .allCommentDataList !=
+                            //               null
+                            //           ? Padding(
+                            //               padding: const EdgeInsets.all(20.0),
+                            //               child: ListView.separated(
+                            //                   physics:
+                            //                       const BouncingScrollPhysics(),
+                            //                   itemCount: cubit
+                            //                       .allCommentsModel!
+                            //                       .allCommentDataList!
+                            //                       .allCommentsList
+                            //                       .length,
+                            //                   itemBuilder: (context, i) =>
+                            //                       buildCommentsItem(
+                            //                           context,
+                            //                           cubit
+                            //                               .allCommentsModel!
+                            //                               .allCommentDataList!
+                            //                               .allCommentsList[i]),
+                            //                   separatorBuilder:
+                            //                       (BuildContext context,
+                            //                               int index) =>
+                            //                           const SizedBox(
+                            //                             height: 20,
+                            //                           )),
+                            //             )
+                            //           : const Center(
+                            //               child: Text('لا توجد تعليقات!')),
+                            //       fallback: (context) => const Center(
+                            //           child: CircularProgressIndicator())),
+                            // ),
                           ],
                         ),
                       )
