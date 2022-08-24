@@ -13,8 +13,8 @@ class LoginModel {
 
 class UserDataModel {
   late int id;
-  late String studentName;
-  late String univerNumber;
+  late String? studentName;
+  late String? univerNumber;
 
   UserDataModel.fromJson(List<dynamic> list) {
     list.forEach((element) {

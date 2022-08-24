@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lis/moduls/classes/cubit/classes_cubit.dart';
 import 'package:lis/moduls/comments/cubit/comments_cubit.dart';
-import 'package:lis/moduls/courses/courses_screen.dart';
 import 'package:lis/moduls/courses/cubit/courses_cubit.dart';
 import 'package:lis/moduls/group/cubit/group_cubit.dart';
 import 'package:lis/moduls/group/group_screen.dart';

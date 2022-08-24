@@ -20,7 +20,7 @@ class AllCommentDataList {
 
 class AllCommentDataModel {
   late int id;
-  late String description;
+   String? description;
 
   AllCommentDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

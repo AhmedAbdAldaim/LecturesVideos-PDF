@@ -87,7 +87,7 @@ class CoursesScreen extends StatelessWidget {
             context,
             LecturesByCourses(
               coursesID: coursesModel.id,
-              courseName: coursesModel.courseName,
+              courseName: coursesModel.courseName!,
             ));
       },
       child: Container(
@@ -107,7 +107,7 @@ class CoursesScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0)),
             color: Colors.black.withOpacity(0.8),
             child: Center(
-                child: Text(coursesModel.courseName,
+                child: Text(coursesModel.courseName!,
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(

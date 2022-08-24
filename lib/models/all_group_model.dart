@@ -21,7 +21,7 @@ class AllGroubDataList{
 
 class AllGroupDataModel{
   late int id;
-  late String categoryName;
+   String? categoryName;
 
    AllGroupDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

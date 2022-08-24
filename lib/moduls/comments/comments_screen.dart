@@ -60,7 +60,7 @@ class CommentsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0)),
             color: Colors.black.withOpacity(0.8),
             child: Center(
-                child: Text(allcomentModel.description,
+                child: Text(allcomentModel.description!,
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(

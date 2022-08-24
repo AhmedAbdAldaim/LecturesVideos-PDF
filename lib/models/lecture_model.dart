@@ -21,11 +21,11 @@ class LectureDataList {
 }
 
 class LectureDataModel {
-  late int id;
-  late String lectureTitle;
-  late String lectureVideo;
-  late String lectureFile;
-  late String comment;
+   late int id;
+   String? lectureTitle;
+   String? lectureVideo;
+   String? lectureFile;
+   String? comment;
 
   LectureDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

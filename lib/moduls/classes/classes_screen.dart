@@ -75,7 +75,7 @@ Widget buildClassesItem(AllClassesDataModel model , BuildContext context , int g
           children: [
             Container(width: 30,alignment: Alignment.center ,color: Colors.amber ,child: Text(model.id.toString())),
             const SizedBox(width: 10.0,),
-            Text(model.classname),
+            Text(model.classname!),
           ],
         )),
     ),

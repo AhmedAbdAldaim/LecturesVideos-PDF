@@ -21,7 +21,7 @@ class AllClassesDataList {
 
 class AllClassesDataModel {
   late int id;
-  late String classname;
+   String? classname;
   AllClassesDataModel.fromJson(Map<String, dynamic>json){
   id = json['id'];
   classname = json['class_name'];

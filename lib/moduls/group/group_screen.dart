@@ -84,7 +84,7 @@ Widget buildGroupItem(AllGroupDataModel model, BuildContext context) {
       elevation: 5.0,
       child: Center(
           child:
-              Container(color: Colors.amber, child: Text(model.categoryName))),
+              Container(color: Colors.amber, child: Text(model.categoryName!))),
     ),
   );
 }

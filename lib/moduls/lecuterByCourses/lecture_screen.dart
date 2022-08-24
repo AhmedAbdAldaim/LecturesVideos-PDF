@@ -82,9 +82,10 @@ class LecturesByCourses extends StatelessWidget {
 
   Widget buildLectureItem(BuildContext context, LectureDataModel lectureModel , index) {
     return BuildVideoItem(
+         lectureModel.lectureFile!,
          'http://192.168.43.176:8000/uploads/${lectureModel.lectureFile}',
         'http://192.168.43.176:8000/uploads/${lectureModel.lectureVideo}',
-        lectureModel.lectureTitle , lectureModel.comment ,index);
+        lectureModel.lectureTitle! , lectureModel.comment! ,index);
   }
 }
 
