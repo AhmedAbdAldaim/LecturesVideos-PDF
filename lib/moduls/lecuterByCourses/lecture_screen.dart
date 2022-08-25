@@ -56,6 +56,8 @@ class LecturesByCourses extends StatelessWidget {
                                       Text(cubit.lectureModel!.lectureDataList!
                                           .lectureList.length
                                           .toString()),
+                                      
+
                                     ],
                                   ),
                                 ),

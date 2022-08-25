@@ -84,9 +84,7 @@ class BuildVideoItemState extends State<BuildVideoItem> {
                             onPressed: () async {
                               await cubit.saveFile(
                                   widget.pdf,
-                                  widget.titlepdf +
-                                      '_' +
-                                      DateTime.now().toString());
+                                  '${widget.titlepdf}_${DateTime.now()}');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text(
