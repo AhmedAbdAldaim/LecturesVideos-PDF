@@ -106,82 +106,71 @@ class _ShowVideoScreenState extends State<ShowVideoScreen> {
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 30,
                             ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 5.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const[
                                   Icon(Icons.chat),
                                   Text('الملاحظات'),
                                 ],
                               ),
                             ),
-                            widget.comment != null ||
-                                    widget.comment!.isNotEmpty ||
-                                    widget.comment!.contains('')
-                                ? Expanded(
-                                    child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                            clipBehavior:
-                                                Clip.antiAliasWithSaveLayer,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(1),
-                                            ),
-                                            child: Card(
-                                              elevation: 0.0,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadiusDirectional
-                                                          .only(
-                                                              bottomEnd:
-                                                                  Radius
-                                                                      .circular(
-                                                                          20),
-                                                              bottomStart:
-                                                                  Radius
-                                                                      .circular(
-                                                                          5),
-                                                              topEnd: Radius
-                                                                  .circular(20),
-                                                              topStart: Radius
-                                                                  .circular(
-                                                                      20))),
+                            if(widget.comment=="")
+                            const Padding(
+                              padding:  EdgeInsets.all(14.0),
+                              child: Text('لا توجد ملاحظات.'),
+                            )
+                            else
+                            Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child:Expanded(
+                              child: Card(
+                                elevation: 0.0,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadiusDirectional
+                                            .only(
+                                                bottomEnd:
+                                                    Radius.circular(
+                                                            15),
+                                                bottomStart:
+                                                    Radius
+                                                        .circular(
+                                                            3),
+                                                topEnd: Radius
+                                                    .circular(15),
+                                                topStart: Radius
+                                                    .circular(
+                                                        15))),
+                                color: Colors.black.withOpacity(0.4),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
+                                  child: Text(widget.comment!,
+                                      maxLines: 3,
+                                      textAlign:
+                                          TextAlign.start,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(
                                               color:
-                                                  Colors.black.withOpacity(0.2),
-                                              child: Center(
-                                                  child: Text(widget.comment!,
-                                                      maxLines: 3,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleLarge!
-                                                          .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis))),
-                                            ))
-                                      ],
-                                    ),
-                                  ))
-                                : SizedBox(
-                                    height: 0.0,
-                                  )
+                                                  Colors.white,
+                                              overflow:
+                                                  TextOverflow
+                                                      .ellipsis)),
+                                ),
+                              ),
+                            )
+                             
+                                  )      
                           ],
                         ),
                       )
-                    : SizedBox(
+                    : const SizedBox(
                         height: 0.0,
                       ),
               )),

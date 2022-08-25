@@ -59,7 +59,7 @@ class BuildVideoItemState extends State<BuildVideoItem> {
                       navigateTo(
                           context,
                           ShowVideoScreen(widget.url!, widget.title,
-                              widget.comment!, widget.index));
+                              widget.comment, widget.index));
                     },
                     leading:  Card(
                             child: AspectRatio(

@@ -21,7 +21,7 @@ class LectureDataList {
 }
 
 class LectureDataModel {
-   late int id;
+  late int id;
    String? lectureTitle;
    String? lectureVideo;
    String? lectureFile;
@@ -32,6 +32,6 @@ class LectureDataModel {
     lectureTitle = json['lecture_title'];
     lectureVideo = json['lecture_video'];
     lectureFile = json['lecture_file'];
-    comment = json['comment'];
+    comment = json['comment']?? "";
   }
 }
